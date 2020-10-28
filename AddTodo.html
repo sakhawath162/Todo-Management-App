@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+<link   rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+		crossorigin="anonymous">
+
+</head>
+<body>
+
+	<div class="container">
+	<h1>Todo Management System</h1>
+	<hr>
+	<h2>Add Todo</h2>
+	
+	<form th:action="@{/saveTodo}" th:object="${todo}" method="POST">
+	 <div class="form-group"
+    th:classappend="${#fields.hasErrors('name')}? 'has-error':''">
+    <label for="name" class="control-label">TODO</label> 
+    <input id="name" class="form-control" th:field="*{name}" />
+    <p class="error-message"
+       th:each="error: ${#fields.errors('name')}"
+       th:text="${error}">Validation error</p>
+    </div>
+	<div class="form-group"
+    th:classappend="${#fields.hasErrors('startdate')}? 'has-error':''">
+    <label for="startdate" class="control-label">Start Date</label> 
+    <input id="startdate" class="form-control" th:field="*{startdate}" />
+    <p class="error-message"
+       th:each="error: ${#fields.errors('startdate')}"
+       th:text="${error}">Validation error</p>
+    </div>
+	<div class="form-group"
+    th:classappend="${#fields.hasErrors('targetdate')}? 'has-error':''">
+    <label for="targetdate" class="control-label">Target Date</label> 
+    <input id="targetdate" class="form-control" th:field="*{targetdate}" />
+    <p class="error-message"
+       th:each="error: ${#fields.errors('targetdate')}"
+       th:text="${error}">Validation error</p>
+    </div>
+
+	<button type="submit" class="btn btn-info col-2">Save Todo</button>
+	</form>
+	
+	</div>
+
+</body>
+</html>
