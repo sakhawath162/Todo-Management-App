@@ -45,8 +45,7 @@ public class TodoServiceImp implements TodoService {
 	public void deleteTOdo(Todo todo) {
 		tr.delete(todo);
 		
-	}
-	
+	}	
 }
 
 
